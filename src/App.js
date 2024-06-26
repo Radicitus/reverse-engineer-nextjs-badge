@@ -95,7 +95,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
     "https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/SOT1hmCesOHxEYxL7vkoZ/c57b29c85912047c414311723320c16b/band.jpg",
   );
   const badgeTexture = useTexture("vercel-ship-badge-texture.jpg");
-  badgeTexture.repeat.x = -1;
+  badgeTexture.flipY = false;
   const { width, height } = useThree((state) => state.size);
   const [curve] = useState(
     () =>
@@ -202,36 +202,36 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
               )
             )}
           >
-            <mesh position={[0, 0.5, 0]} rotation={[0, 0, Math.PI]}>
+            <mesh position={[0, 0.5, 0]}>
               <planeGeometry args={[0.925, -0.925 / 0.7]} />
               <meshBasicMaterial
                 transparent
                 alphaMap={badgeTexture}
                 side={THREE.BackSide}
               />
-              <Center bottom right>
-                <Resize maxHeight={0.45} maxWidth={0.925}>
-                  <Text3D
-                    bevelEnabled={false}
-                    bevelSize={0}
-                    font="/Geist_Regular.json"
-                    height={0}
-                    rotation={[0, 0, Math.PI]}
-                  >
-                    {"Cameron"}
-                  </Text3D>
-                  <Text3D
-                    bevelEnabled={false}
-                    bevelSize={0}
-                    font="/Geist_Regular.json"
-                    height={0}
-                    position={[0, 1.4, 0]}
-                    rotation={[0, 0, Math.PI]}
-                  >
-                    {"Sherry"}
-                  </Text3D>
-                </Resize>
-              </Center>
+              {/*<Center bottom right>*/}
+              {/*  <Resize maxHeight={0.45} maxWidth={0.925}>*/}
+              {/*    <Text3D*/}
+              {/*      bevelEnabled={false}*/}
+              {/*      bevelSize={0}*/}
+              {/*      font="/Geist_Regular.json"*/}
+              {/*      height={0}*/}
+              {/*      rotation={[0, 0, Math.PI]}*/}
+              {/*    >*/}
+              {/*      {"Cameron"}*/}
+              {/*    </Text3D>*/}
+              {/*    <Text3D*/}
+              {/*      bevelEnabled={false}*/}
+              {/*      bevelSize={0}*/}
+              {/*      font="/Geist_Regular.json"*/}
+              {/*      height={0}*/}
+              {/*      position={[0, 1.4, 0]}*/}
+              {/*      rotation={[0, 0, Math.PI]}*/}
+              {/*    >*/}
+              {/*      {"Sherry"}*/}
+              {/*    </Text3D>*/}
+              {/*  </Resize>*/}
+              {/*</Center>*/}
             </mesh>
           </group>
         </RigidBody>
