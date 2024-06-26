@@ -90,6 +90,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
   const texture = useTexture(
     "https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/SOT1hmCesOHxEYxL7vkoZ/c57b29c85912047c414311723320c16b/band.jpg",
   );
+  const badgeTexture = useTexture("vercel-ship-badge-texture.jpg");
   const { width, height } = useThree((state) => state.size);
   const [curve] = useState(
     () =>
