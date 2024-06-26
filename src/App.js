@@ -10,6 +10,7 @@ import {
   Resize,
   Text3D,
   RenderTexture,
+  PerspectiveCamera,
 } from "@react-three/drei";
 import {
   BallCollider,
@@ -213,8 +214,14 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
                 roughness={0.3}
               >
                 <RenderTexture attach="map" height={2000} width={2000}>
-                  <mesh position={[-1.1, -0.7, 0]}>
-                    <planeGeometry args={[2.3, -2.3 / 0.57]} />
+                  <PerspectiveCamera
+                    makeDefault
+                    manual
+                    aspect={1.05}
+                    position={[0.49, 0.22, 2]}
+                  />
+                  <mesh geometry={nodes.card.geometry}>
+                    <planeGeometry args={[0.925, -0.925 / 0.7]} />
                     <meshBasicMaterial
                       transparent
                       alphaMap={badgeTexture}
