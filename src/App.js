@@ -221,7 +221,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
                     position={[0.49, 0.22, 2]}
                   />
                   <mesh geometry={nodes.card.geometry}>
-                    <planeGeometry args={[0.925, -0.925 / 0.7]} />
+                    <planeGeometry args={[0.95, -0.95 / 0.7]} />
                     <meshBasicMaterial
                       transparent
                       alphaMap={badgeTexture}
