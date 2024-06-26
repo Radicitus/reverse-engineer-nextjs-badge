@@ -6,6 +6,9 @@ import {
   useTexture,
   Environment,
   Lightformer,
+  Center,
+  Resize,
+  Text3D,
 } from "@react-three/drei";
 import {
   BallCollider,
@@ -200,12 +203,35 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
             )}
           >
             <mesh position={[0, 0.5, 0]} rotation={[0, 0, Math.PI]}>
-              <planeGeometry args={[0.912, -0.912 / 0.7]} />
+              <planeGeometry args={[0.925, -0.925 / 0.7]} />
               <meshBasicMaterial
                 transparent
                 alphaMap={badgeTexture}
                 side={THREE.BackSide}
               />
+              <Center bottom right>
+                <Resize maxHeight={0.45} maxWidth={0.925}>
+                  <Text3D
+                    bevelEnabled={false}
+                    bevelSize={0}
+                    font="/Geist_Regular.json"
+                    height={0}
+                    rotation={[0, 0, Math.PI]}
+                  >
+                    {"Cameron"}
+                  </Text3D>
+                  <Text3D
+                    bevelEnabled={false}
+                    bevelSize={0}
+                    font="/Geist_Regular.json"
+                    height={0}
+                    position={[0, 1.4, 0]}
+                    rotation={[0, 0, Math.PI]}
+                  >
+                    {"Sherry"}
+                  </Text3D>
+                </Resize>
+              </Center>
             </mesh>
           </group>
         </RigidBody>
