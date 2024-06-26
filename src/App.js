@@ -17,6 +17,7 @@ import {
 } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 import { useControls } from "leva";
+import { degToRad } from "three/src/math/MathUtils";
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 useGLTF.preload(
@@ -40,7 +41,7 @@ export default function App() {
         <Band />
       </Physics>
       <Environment background blur={0.75}>
-        <color attach="background" args={["white"]} />
+        <color attach="background" args={["grey"]} />
         <Lightformer
           intensity={2}
           color="white"
@@ -91,6 +92,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
     "https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/SOT1hmCesOHxEYxL7vkoZ/c57b29c85912047c414311723320c16b/band.jpg",
   );
   const badgeTexture = useTexture("vercel-ship-badge-texture.jpg");
+  badgeTexture.repeat.x = -1;
   const { width, height } = useThree((state) => state.size);
   const [curve] = useState(
     () =>
@@ -197,22 +199,14 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
               )
             )}
           >
-            <mesh geometry={nodes.card.geometry}>
-              <meshPhysicalMaterial
-                map={materials.base.map}
-                map-anisotropy={16}
-                clearcoat={1}
-                clearcoatRoughness={0.15}
-                roughness={0.3}
-                metalness={0.5}
+            <mesh position={[0, 0.5, 0]} rotation={[0, 0, Math.PI]}>
+              <planeGeometry args={[0.912, -0.912 / 0.7]} />
+              <meshBasicMaterial
+                transparent
+                alphaMap={badgeTexture}
+                side={THREE.BackSide}
               />
             </mesh>
-            <mesh
-              geometry={nodes.clip.geometry}
-              material={materials.metal}
-              material-roughness={0.3}
-            />
-            <mesh geometry={nodes.clamp.geometry} material={materials.metal} />
           </group>
         </RigidBody>
       </group>
