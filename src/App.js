@@ -166,6 +166,50 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
   curve.curveType = "chordal";
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
+  function BadgeTexture({ user }) {
+    return (
+      <>
+        <PerspectiveCamera
+          makeDefault
+          manual
+          aspect={1.05}
+          position={[0.49, 0.22, 2]}
+        />
+        <mesh geometry={nodes.card.geometry}>
+          <planeGeometry args={[0.95, -0.95 / 0.7]} />
+          <meshBasicMaterial
+            transparent
+            alphaMap={badgeTexture}
+            side={THREE.BackSide}
+          />
+        </mesh>
+        <Center bottom right>
+          <Resize maxHeight={0.45} maxWidth={0.925}>
+            <Text3D
+              bevelEnabled={false}
+              bevelSize={0}
+              font="/Geist_Regular.json"
+              height={0}
+              rotation={[0, Math.PI, Math.PI]}
+            >
+              {user.firstName}
+            </Text3D>
+            <Text3D
+              bevelEnabled={false}
+              bevelSize={0}
+              font="/Geist_Regular.json"
+              height={0}
+              position={[0, 1.4, 0]}
+              rotation={[0, Math.PI, Math.PI]}
+            >
+              {user.lastName}
+            </Text3D>
+          </Resize>
+        </Center>
+      </>
+    );
+  }
+
   return (
     <>
       <group position={[0, 4, 0]}>
@@ -214,20 +258,9 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
                 roughness={0.3}
               >
                 <RenderTexture attach="map" height={2000} width={2000}>
-                  <PerspectiveCamera
-                    makeDefault
-                    manual
-                    aspect={1.05}
-                    position={[0.49, 0.22, 2]}
+                  <BadgeTexture
+                    user={{ firstName: "Cameron", lastName: "Sherry" }}
                   />
-                  <mesh geometry={nodes.card.geometry}>
-                    <planeGeometry args={[0.95, -0.95 / 0.7]} />
-                    <meshBasicMaterial
-                      transparent
-                      alphaMap={badgeTexture}
-                      side={THREE.BackSide}
-                    />
-                  </mesh>
                 </RenderTexture>
               </meshPhysicalMaterial>
             </mesh>
