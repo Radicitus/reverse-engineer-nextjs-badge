@@ -40,7 +40,7 @@ export default function App() {
         <Band />
       </Physics>
       <Environment background blur={0.75}>
-        <color attach="background" args={["black"]} />
+        <color attach="background" args={["white"]} />
         <Lightformer
           intensity={2}
           color="white"
