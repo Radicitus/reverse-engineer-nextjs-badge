@@ -183,28 +183,28 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
             side={THREE.BackSide}
           />
         </mesh>
-        <Center bottom right>
-          <Resize maxHeight={0.45} maxWidth={0.925}>
-            <Text3D
-              bevelEnabled={false}
-              bevelSize={0}
-              font="/Geist_Regular.json"
-              height={0}
-              rotation={[0, Math.PI, Math.PI]}
-            >
-              {user.firstName}
-            </Text3D>
-            <Text3D
-              bevelEnabled={false}
-              bevelSize={0}
-              font="/Geist_Regular.json"
-              height={0}
-              position={[0, 1.4, 0]}
-              rotation={[0, Math.PI, Math.PI]}
-            >
-              {user.lastName}
-            </Text3D>
-          </Resize>
+        <Center position={[-0.22, 0.25, 0]}>
+          <Text3D
+            bevelEnabled={false}
+            bevelSize={0}
+            font="/Geist_Regular.json"
+            height={0}
+            size={0.07}
+            rotation={[0, Math.PI, Math.PI]}
+          >
+            {user.firstName}
+          </Text3D>
+          <Text3D
+            bevelEnabled={false}
+            bevelSize={0}
+            font="/Geist_Regular.json"
+            height={0}
+            size={0.07}
+            position={[0, 0.09, 0]}
+            rotation={[0, Math.PI, Math.PI]}
+          >
+            {user.lastName}
+          </Text3D>
         </Center>
       </>
     );
