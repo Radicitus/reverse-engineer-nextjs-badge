@@ -264,6 +264,12 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
                 </RenderTexture>
               </meshPhysicalMaterial>
             </mesh>
+            <mesh
+              geometry={nodes.clip.geometry}
+              material={materials.metal}
+              material-roughness={0.3}
+            />
+            <mesh geometry={nodes.clamp.geometry} material={materials.metal} />
           </group>
         </RigidBody>
       </group>
