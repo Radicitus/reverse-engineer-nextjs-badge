@@ -1,3 +1,5 @@
+// noinspection CommaExpressionJS
+
 import * as THREE from "three";
 import { useEffect, useRef, useState } from "react";
 import { Canvas, extend, useThree, useFrame } from "@react-three/fiber";
@@ -7,7 +9,6 @@ import {
   Environment,
   Lightformer,
   Center,
-  Resize,
   Text3D,
   RenderTexture,
   PerspectiveCamera,
@@ -22,7 +23,6 @@ import {
 } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 import { useControls } from "leva";
-import { degToRad } from "three/src/math/MathUtils";
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 useGLTF.preload(
@@ -179,7 +179,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
         <mesh geometry={nodes.card.geometry}>
           <planeGeometry args={[0.95, -0.95 / 0.7]} />
           <meshBasicMaterial
-            transparent
+            transparent={true}
             alphaMap={badgeTexture}
             side={THREE.BackSide}
           />
@@ -280,7 +280,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
           color="white"
           depthTest={false}
           resolution={[width, height]}
-          useMap
+          useMap={true}
           map={bandTexture}
           repeat={[-3, 1]}
           lineWidth={1}
